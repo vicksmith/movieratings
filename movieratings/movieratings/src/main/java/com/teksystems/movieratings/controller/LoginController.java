@@ -1,4 +1,5 @@
 package com.teksystems.movieratings.controller;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,9 @@ public class LoginController {
 		ModelAndView response = new ModelAndView();
 		response.setViewName("createuser");
 
-
 		return response;
 	}
+
 	@PostMapping(value = "/user/createuser")
 	public ModelAndView createUserSubmit(@Valid CreateUserForm form, BindingResult bindingResult) {
 		ModelAndView response = new ModelAndView();
@@ -44,27 +45,19 @@ public class LoginController {
 
 		log.debug(form.toString());
 
+		User user = new User();
 
+		user.setFirstName(form.getFirstName());
+		user.setLastName(form.getLastName());
+		user.setPassword(form.getPassword());
+		user.setEmail(form.getEmail());
 
-			User user = new User();
-
-			user.setFirstName(form.getFirstName());
-			user.setLastName(form.getLastName());
-			user.setPassword(form.getPassword());
-			user.setEmail(form.getEmail());
-
-
-			user.setAvatar(form.getAvatar());
-			userDao.save(user);
-
-
-
-
-
-
+		user.setAvatar(form.getAvatar());
+		userDao.save(user);
 
 		return response;
 	}
-
+	
+	
 
 }
