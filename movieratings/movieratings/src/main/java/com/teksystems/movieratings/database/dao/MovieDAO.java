@@ -22,6 +22,6 @@ public interface MovieDAO extends JpaRepository<Movie, Long> {
 	public List<Map<String, Object>> findMovieDetails();
 	
 	@Query(value="SELECT m.id, m.image, m.title, m.director, m.year, g.name from movie m join genre g where m.genre = g.id and m.id = :id",nativeQuery=true)
-	public Map<String, Object> findMovieDetails(@RequestParam("id") Integer id);
+	public Map<String, Object> findMovieDetails(Integer id);
 
 	}

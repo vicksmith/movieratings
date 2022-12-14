@@ -11,7 +11,13 @@
             <p class="mb-0" style="color:red">${error.getDefaultMessage()}</p>
         </c:forEach>
     </c:if>
-
+    <div>
+        <h4>Add me to the email list</h4>
+        Yes
+        <input type ="radio" checked=true name="opt-in">
+        No
+        <input type ="radio" checked=true name="opt-out">
+    </div>
     <form action="/user/createuser" method="post"> 
        
         

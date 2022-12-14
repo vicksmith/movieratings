@@ -27,6 +27,7 @@ public class User {
 	@Column(name = "id")
 	private Integer id;
 
+	@Column(name="email")
 	private String email;
 
 	private String password;
@@ -37,10 +38,6 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 
-
 	private String avatar;
-
-
-
 
 }

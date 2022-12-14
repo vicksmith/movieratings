@@ -15,8 +15,8 @@ public interface RatingDAO extends JpaRepository <Rating, Long> {
 
 	public Rating getById(Integer id);
 
-	@Query("SELECT r FROM Rating r where r.movieId= :id")
-	public List<Rating> getByMovieId(Integer id);
+	@Query(value="SELECT u.email, r.no_stars, r.comment FROM user u, rating r where r.user_id = u.id and r.movie_id= :id", nativeQuery=true)
+	public List<Map<String, Object>> getByMovieId(Integer id);
 
 	@Query("SELECT r FROM Rating r where r.userId= :id")
 	public List<Rating> getbyUserId(Integer id);
