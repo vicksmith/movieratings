@@ -65,14 +65,15 @@
       <tbody>
         <c:forEach items="${ratings}" var="rating">
           <tr>
-            <td>${rating.userId}</td>
-            <td>${rating.noStars}</td>
+            <td>${rating.email}</td>
+            <td>${rating.no_stars}</td>
             <td>${rating.comment}</td>
           </tr>
-          <tr>
+         
 
-      </tbody>
+      
       </c:forEach>
+    </tbody>
     </table>
   </div>
   <style>
