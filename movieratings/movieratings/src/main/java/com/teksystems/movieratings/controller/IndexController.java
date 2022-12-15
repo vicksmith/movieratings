@@ -31,8 +31,6 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class IndexController {
 
-	@Autowired
-	private UserDAO userDAO;
 
 	@Autowired
 	private MovieDAO movieDAO;
@@ -49,23 +47,18 @@ public class IndexController {
 		response.setViewName("index");
 		List<Map<String, Object>> movies = movieDAO.findMovieDetails();
 		response.addObject("movies", movies);
+		log.debug("Home Page Accessed");
 		return response;
 
 	}
 
-//	@GetMapping(value="/movie")
-//	public ModelAndView movie() {
-//		ModelAndView response = new ModelAndView();
-//		response.setViewName("movie");
-//		return response;
-
-//	}
 	@GetMapping(value = "/search")
 	public ModelAndView search(@RequestParam String search) {
 		ModelAndView response = new ModelAndView();
 		response.setViewName("index");
-		List<Movie> movies = movieDAO.findByTitle(search);
+		List<Map<String, Object>> movies = movieDAO.findByTitle(search);
 		response.addObject("movies", movies);
+		log.debug("User searched for " + search);
 		return response;
 
 	}
@@ -78,6 +71,7 @@ public class IndexController {
 		List<Map<String, Object>> ratings = ratingDAO.getByMovieId(id);
 		response.addObject("movie", movie);
 		response.addObject("ratings", ratings);
+		log.debug("User viewed movie details for movie with id: " + id);
 		return response;
 
 	}
@@ -95,7 +89,7 @@ public class IndexController {
 		rating.setComment(comment);
 		rating.setMovieId(movieId);
 		ratingDAO.save(rating);
-
+		log.debug("New rating posted for movie with id: " + movieId);
 		return response;
 	}
 
@@ -107,39 +101,8 @@ public class IndexController {
 		response.setViewName("userprofile");
 		List<Map<String, Object>> ratings = ratingDAO.getUserRatings(user.getId());
 		response.addObject("ratings", ratings);
-
+		log.debug("User: " + user + "viewed their profile");
 		return response;
 	}
 
-	@GetMapping(value = "/movie/addmovie")
-	public ModelAndView addmovie() {
-		ModelAndView response = new ModelAndView();
-		response.setViewName("addmovie");
-		return response;
-	}
-
-	@PostMapping(value = "/movie/addmovie")
-	public ModelAndView addmovie(@Valid AddMovieForm form, BindingResult bindingResult) {
-		ModelAndView response = new ModelAndView();
-		response.setViewName("addmovie");
-		for (ObjectError e : bindingResult.getAllErrors()) {
-			log.debug(e.getObjectName() + " : " + e.getDefaultMessage());
-
-		}
-		if (!bindingResult.hasErrors()) {
-
-			Movie movie = new Movie();
-			movie.setTitle(form.getTitle());
-			movie.setDirector(form.getDirector());
-			movie.setYear(form.getYear());
-			movie.setGenre(form.getGenre());
-			movie.setImage(form.getImage());
-			movieDAO.save(movie);
-		} else {
-			response.addObject("bindingResult", bindingResult);
-			response.addObject("form", form);
-		}
-		return response;
-
-	}
 }

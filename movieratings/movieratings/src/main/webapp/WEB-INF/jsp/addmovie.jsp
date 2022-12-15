@@ -14,6 +14,7 @@
             </c:forEach>
 
         </c:if>
+        
 
         <form action="/movie/addmovie" method="POST">
             <div class="row mt-2 mb-3 justify-content-center">

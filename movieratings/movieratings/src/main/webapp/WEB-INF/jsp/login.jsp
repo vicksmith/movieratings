@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <form action="/user/loginpost" method="POST">
+    <form id="loginform" action="/user/loginpost" method="POST">
         <div class="row justify-content-center">
             <div class="mt-2 mb-3 col-4">
                 <label for="username" class="form-label">Username</label>

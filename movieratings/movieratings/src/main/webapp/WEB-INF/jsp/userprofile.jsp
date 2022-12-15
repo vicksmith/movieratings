@@ -1,11 +1,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <jsp:include page="include/header.jsp" />
 
 
 <div class="container text-center">
   <h1>User Profile Page</h1>
-  <p>Name: ${user.email}</p>
 
+   <p> ${user.email}</p>
+  
     
         <h2>Past Ratings:</h2>
         <table class="table table-bordered table-dark">
