@@ -1,5 +1,5 @@
 # movieratings
-This project was a full-stack application using Spring Boot and being displayed on the front ending using Java Server Pages(JSP).  The Movie Ratings application is allows a user to search and view details about movies as well as give the movie rating and leave comments.  The user can also view the ratings from other users. The user can view a profile page that displays all of their past ratings.  The application utilizes Spring Security to manage user sessions and authorizations. 
+This project was a full-stack application using Spring Boot and being displayed on the front ending using Java Server Pages(JSP).  The Movie Ratings application allows a user to search and view details about movies as well as give the movie rating and leave comments.  The user can also view the ratings from other users. The user can view a profile page that displays all of their past ratings.  The application utilizes Spring Security to manage user sessions and authorizations. 
 
 Below is a screenshot of the homepage.  I utilized boostrap styling to create cards dispalying each movie.  The page is also responsive, adjusting to the screen size of the viewer.
 <img src= "\Users\smith\OneDrive\Pictures\Screenshots\Screenshot_20221216_014410.png">
