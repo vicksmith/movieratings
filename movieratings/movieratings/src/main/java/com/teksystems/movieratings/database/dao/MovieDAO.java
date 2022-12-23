@@ -13,7 +13,7 @@ import com.teksystems.movieratings.database.entity.Movie;
 @Repository
 public interface MovieDAO extends JpaRepository<Movie, Long> {
 
-	@Query(value="SELECT m.id, m.image, m.title, m.director, m.year, g.name from movie m join genre g where m.title =:title",nativeQuery = true)
+	@Query(value="SELECT m.id, m.image, m.title, m.director, m.year, g.name from movie m inner join genre g where g.id = m.genre and title= :title", nativeQuery = true)
 	public List<Map<String, Object>>findByTitle(String title );
 
 	public Movie getById(Integer id);
